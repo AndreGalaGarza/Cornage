@@ -1,0 +1,23 @@
+Things to do to complete development of Cornage, in order:
+(When you're done with a task, add a ✓ in between the brackets.)
+
+[✓] Create player GameObject and implement basic movement
+[✓] Allow the player to shoot corn kernels at a fixed rate and speed by holding the mouse button down
+[✓] Create enemy GameObject (specifically a Slime) that squishes and stretches, and also follows the player
+[✓] Give corn kernels the ability to damage and defeat Slimes
+[✓] Improve graphics for player and enemy
+[✓] Add camera movement that always attaches itself to the player, meaning the player is always centered on-screen
+[✓] Add tiled grass texture so player knows when the camera is moving
+[] Add boundaries for the camera and the player
+[] Make corn bullets despawn when they pass these boundaries
+[] Update spawn positions of enemies to be outside play boundaries
+[] Add Bucks: defeating a Slime is worth 5 Bucks
+[] Add time limit; within this time limit, the player must both survive and reach a certain number of Bucks, in order to clear the current wave and go to the next wave
+[] Add progression of waves; the player's high score is the highest wave number they survived to
+[] Update Slime spawn rate so that higher waves spawn more Slimes
+[] Add tile-based dirt patches that the player can plant corn kernels on
+[] Make patches store a kernel value that grows over time
+[] Allow the player to harvest grown kernels, adding them to a corn ammo variable
+[] Limit corn ammo; the player should start with only around 10 kernels
+[] Allow player to sell kernels for 1 Buck apiece
+[] Add title screen, game over screen, music, and sound effects
