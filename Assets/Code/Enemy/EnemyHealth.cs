@@ -35,6 +35,8 @@ public class EnemyHealth : MonoBehaviour
         sRenderer.color = spriteColor;
 		
 		if (HP <= 0) {
+			// Player earns 5 cash for popping a slime
+			GlobalVariables.playerMoney += 5;
 			for (int i = 0; i < 7; i++) {
 				Instantiate(EnemyParticle, transform.position, Quaternion.identity);
 			}

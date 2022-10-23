@@ -6,24 +6,46 @@ public class EnemySpawner : MonoBehaviour
 {
 	public GameObject Enemy;
 	private float enemySpawnTime = 3f;
-	private float enemySpawn;
-	private Vector3 spawnPos;
+	private float enemySpawnTimer;
+	
+	
+	void SpawnEnemy(float xMin, float xMax, float yMin, float yMax) {
+		Vector3 spawnPos;
+		spawnPos = new Vector3(Random.Range(xMin, xMax),
+				Random.Range(yMin, yMax), 0);
+		Instantiate(Enemy, spawnPos, Quaternion.identity);
+	}
 	
     void Start()
     {
-        enemySpawn = enemySpawnTime;
+        enemySpawnTimer = enemySpawnTime;
     }
 	
     void Update()
     {
-        if (enemySpawn > 0) {
-			enemySpawn -= Time.deltaTime;
+        if (enemySpawnTimer > 0) {
+			enemySpawnTimer -= Time.deltaTime;
 		}
 		else {
-			enemySpawn = enemySpawnTime;
-			spawnPos = new Vector3(Random.Range(-7.0f, 7.0f),
-				Random.Range(-4.0f, 4.0f), 0);
-			Instantiate(Enemy, spawnPos, Quaternion.identity);
+			enemySpawnTimer = enemySpawnTime;
+			switch(Random.Range(0, 4)) {
+				case 0:
+					// Top boundary
+					SpawnEnemy(-30f, 30f, 20f, 25f);
+					break;
+				case 1:
+					// Bottom boundary
+					SpawnEnemy(-30f, 30f, -25f, -20f);
+					break;
+				case 2:
+					// Left boundary
+					SpawnEnemy(-35f, -30f, -20f, 20f);
+					break;
+				case 3:
+					// Right boundary
+					SpawnEnemy(30f, 35f, -20f, 20f);
+					break;
+			}
 		}
     }
 }

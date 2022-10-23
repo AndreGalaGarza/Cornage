@@ -6,9 +6,9 @@ public class BulletMovement : MonoBehaviour
 {
     void Update()
     {
-        // TEMPORARY level boundaries
-		if (transform.position.x <= -50 || transform.position.x >= 50
-			|| transform.position.y <= -50 || transform.position.y >= 50) {
+        // Destroy object past level boundaries
+		if (transform.position.x <= -35 || transform.position.x >= 35
+			|| transform.position.y <= -25 || transform.position.y >= 25) {
 			Destroy(gameObject);
 		}
     }
