@@ -39,7 +39,14 @@ public class DisplayVariables : MonoBehaviour
 				text.color = Color.green;
 			}
 			else {
-				text.color = Color.white;
+				if (GlobalVariables.timeOfDay == "night"
+					&& GlobalVariables.waveTime <= 10)
+				{
+					text.color = new Color(0.96f, 0.35f, 0.35f);
+				}
+				else {
+					text.color = Color.white;
+				}
 			}
 		}
     }

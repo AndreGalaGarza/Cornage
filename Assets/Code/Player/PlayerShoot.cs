@@ -24,11 +24,7 @@ public class PlayerShoot : MonoBehaviour
 	}
 	
     void Update()
-    {
-		Vector3 worldPosition =
-			Camera.main.ScreenToWorldPoint(Input.mousePosition);	
-		Debug.DrawLine(transform.position, worldPosition, Color.red);
-		
+    {	
 		// When mouse button is held down, fire bullets at a fixed rate
 		if (Input.GetMouseButton(0)) {
 			bulletReloadTimer -= Time.deltaTime;
@@ -42,5 +38,12 @@ public class PlayerShoot : MonoBehaviour
 		if (Input.GetMouseButtonUp(0)) {
 			bulletReloadTimer = 0;
 		}
+	}
+	
+	void FixedUpdate()
+	{
+		Vector3 worldPosition =
+			Camera.main.ScreenToWorldPoint(Input.mousePosition);	
+		Debug.DrawLine(transform.position, worldPosition, Color.red);
 	}
 }

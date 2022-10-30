@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+	private Rigidbody2D rb;
+	private BoxCollider2D coll;
+	
 	private int HP;
 	private int maxHP;
+	private int cashValue;
 	
 	private SpriteRenderer sRenderer;
     private Color spriteColor;
+	private float alpha;
 	private float H;
 	private float S;
 	private float V;
@@ -20,11 +25,26 @@ public class EnemyHealth : MonoBehaviour
 	
 	void Start()
     {
-		maxHP = 25;
+		rb = GetComponent<Rigidbody2D>();
+		coll = GetComponent<BoxCollider2D>();
+		
+		if (gameObject.name == "SlimeBig(Clone)") {
+			maxHP = 30;
+			cashValue = 10;
+		}
+		else if (gameObject.name == "SlimeTiny(Clone)") {
+			maxHP = 3;
+			cashValue = 1;
+		}
+		else {
+			maxHP = 15;
+			cashValue = 5;
+		}
 		HP = maxHP;
 		
         sRenderer = GetComponent<SpriteRenderer>();
         spriteColor = sRenderer.color;
+		alpha = spriteColor.a;
 		Color.RGBToHSV(spriteColor, out H, out S, out V);
     }
 
@@ -35,12 +55,27 @@ public class EnemyHealth : MonoBehaviour
         sRenderer.color = spriteColor;
 		
 		if (HP <= 0) {
-			// Player earns 5 cash for popping a slime
-			GlobalVariables.playerMoney += 5;
+			// Player earns cash for popping a slime
+			GlobalVariables.playerMoney += cashValue;
 			for (int i = 0; i < 7; i++) {
 				Instantiate(EnemyParticle, transform.position, Quaternion.identity);
 			}
 			Destroy(gameObject);
+		}
+		
+		// Disintegrate during the day
+		if (GlobalVariables.timeOfDay == "day")
+		{
+			Destroy(rb);
+			Destroy(coll);
+			if (alpha > 0) {
+				alpha -= (Time.deltaTime * 0.8f);
+				spriteColor.a = alpha;
+				sRenderer.color = spriteColor;
+			}
+			else {
+				Destroy(gameObject);
+			}
 		}
     }
 	

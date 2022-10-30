@@ -25,22 +25,24 @@ public class PlayerMovement : MonoBehaviour
 			speedY -= speedModifier * Time.deltaTime * 100f;
 		}
 		
-		// Cap speed if input is received
+		// Cap speed while input is received
 		speedX = Mathf.Clamp(speedX, -(maxSpeed), maxSpeed);
 		speedY = Mathf.Clamp(speedY, -(maxSpeed), maxSpeed);
-		
+    }
+	
+	void FixedUpdate() {
 		// If both or neither inputs on an axis are received,
 		// slowly decrease speed
 		if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)) ||
 			(!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))) {
 			if (speedX > 0) {
-				speedX -= speedModifier * Time.deltaTime * 100f;
+				speedX -= speedModifier * Time.fixedDeltaTime * 100f;
 				if (speedX < 0) {
 					speedX = 0;
 				}
 			}
 			if (speedX < 0) {
-				speedX += speedModifier * Time.deltaTime * 100f;
+				speedX += speedModifier * Time.fixedDeltaTime * 100f;
 				if (speedX > 0) {
 					speedX = 0;
 				}
@@ -49,13 +51,13 @@ public class PlayerMovement : MonoBehaviour
 		if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ||
 			(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))) {
 			if (speedY > 0) {
-				speedY -= speedModifier * Time.deltaTime * 100f;
+				speedY -= speedModifier * Time.fixedDeltaTime * 100f;
 				if (speedY < 0) {
 					speedY = 0;
 				}
 			}
 			if (speedY < 0) {
-				speedY += speedModifier * Time.deltaTime * 100f;
+				speedY += speedModifier * Time.fixedDeltaTime * 100f;
 				if (speedY > 0) {
 					speedY = 0;
 				}
@@ -65,5 +67,5 @@ public class PlayerMovement : MonoBehaviour
 		// Move player
 		transform.position += transform.right * speedX * Time.deltaTime;
 		transform.position += transform.up * speedY * Time.deltaTime;
-    }
+	}
 }

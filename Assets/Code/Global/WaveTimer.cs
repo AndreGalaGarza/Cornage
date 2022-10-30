@@ -17,8 +17,17 @@ public class WaveTimer : MonoBehaviour
 		}
 		
 		if (GlobalVariables.waveTime == 0) {
-			GlobalVariables.wave += 1;
-			GlobalVariables.waveTime = GlobalVariables.waveLength;
+			if (GlobalVariables.timeOfDay == "day") {
+				GlobalVariables.timeOfDay = "night";
+				GlobalVariables.wave += 1;
+				GlobalVariables.waveTime = GlobalVariables.NIGHT_LENGTH;
+			}
+			else {
+				GlobalVariables.timeOfDay = "day";
+				GlobalVariables.waveTime = GlobalVariables.DAY_LENGTH;
+				GlobalVariables.playerMoney = 0;
+				GlobalVariables.moneyQuota += 20;
+			}
 		}
     }
 }

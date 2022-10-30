@@ -16,10 +16,12 @@ Things to do to complete development of Cornage, in order:
 [✓] Add a quota for Bucks
 [✓] Add time limit; within this time limit, the player must both survive and reach a certain number of Bucks, in order to clear the current wave and go to the next wave
 [✓] Add progression of waves; the player's high score is the highest wave number they survived to
-[] Update Slime spawn rate so that higher waves spawn more Slimes
-[] Add tile-based dirt patches that the player can plant corn kernels on
-[] Make patches store a kernel value that grows over time
-[] Allow the player to harvest grown kernels, adding them to a corn ammo variable
+[✓] Remove friction from players and enemies, and change their movement code to use FixedUpdate()
+[✓] Add day and night cycle (slimes spawn during the night)
+[✓] Update Slime spawn rate so that higher waves spawn more Slimes
+[✓] Add tile-based dirt patches that the player can plant corn kernels on
+[✓] Make patches store a kernel value that grows over time
+[✓] Allow the player to harvest grown kernels, adding them to a corn ammo variable
 [] Limit corn ammo; the player should start with only around 10 kernels
 [] Allow player to sell kernels for 1 Buck apiece
 [] Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2663075923486441605}
   - component: {fileID: -5212898848157779047}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: SlimeBasic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1bae8edd0734b024eacdbbbca450d8ab, type: 3}
   m_Color: {r: 0, g: 0.22388546, b: 0.9150943, a: 1}
   m_FlipX: 0
@@ -130,7 +130,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: adadd1a7c2671db4e876ff3b679e6af2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
