@@ -23,6 +23,10 @@ public class CornPlantAndHarvest : MonoBehaviour
 	private const float CORN_GROWTH_BAR_WIDTH = 0.12f;
 	private float cornGrowthBarLength;
 	
+	private AudioSource audioSource;
+	private AudioClip CornPlant;
+	private AudioClip CornHarvest;
+	
 	private bool PlayerOverlaps()
 	{
 		return Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down,
@@ -43,6 +47,10 @@ public class CornPlantAndHarvest : MonoBehaviour
 		NewCornGrowthBarInside.transform.parent = transform;
 		NewCornGrowthBarOutside.SetActive(false);
 		NewCornGrowthBarInside.SetActive(false);
+		
+		audioSource = GetComponent<AudioSource>();
+		CornPlant = Resources.Load<AudioClip>("Audio/CornPlant");
+		CornHarvest = Resources.Load<AudioClip>("Audio/CornHarvest");
 	}
 	
     void Update()
@@ -53,6 +61,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 				GlobalVariables.HARVEST_COOLDOWN;
 			if (hasKernels) {
 				// Harvest corn from soil
+				audioSource.PlayOneShot(CornHarvest, 0.7f);
 				NewCornGrowthBarOutside.SetActive(false);
 				NewCornGrowthBarInside.SetActive(false);
 				hasKernels = false;
@@ -61,6 +70,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 			}
 			else if (GlobalVariables.playerCorn >= CORN_PLANTED) {
 				// Plant kernels into soil
+				audioSource.PlayOneShot(CornPlant, 0.7f);
 				NewCornGrowthBarOutside.SetActive(true);
 				NewCornGrowthBarInside.SetActive(true);
 				hasKernels = true;
@@ -83,8 +93,11 @@ public class CornPlantAndHarvest : MonoBehaviour
 		if (hasKernels) {
 			if (cornGrown < MAX_CORN_GROWN - 0.1f) {
 				cornGrowthMultiplier += Time.deltaTime;
+				// Corn growth function:
+				// Sigmoid curve takes cornGrown from 0 to 75
+				// in approximately 69.444 seconds
 				cornGrownFloat = GlobalFunctions.Sigmoid(cornGrowthMultiplier,
-					(float)(MAX_CORN_GROWN + 1f), -0.1f, 40f, -1f);
+					(float)(MAX_CORN_GROWN + 5f), -0.1f, 40f, -1f);
 				cornGrown = (int)(cornGrownFloat);
 			}
 			else {

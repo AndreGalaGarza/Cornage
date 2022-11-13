@@ -8,6 +8,8 @@ public class PlayerShoot : MonoBehaviour
 	private const int bulletSpeed = 10;
 	private const float bulletReload = 0.1f;
 	private float bulletReloadTimer = 0;
+	private AudioSource audioSource;
+	private AudioClip CornShoot;
 	
 	void SpawnBullet() {
 		Vector3 worldPosition =
@@ -15,12 +17,16 @@ public class PlayerShoot : MonoBehaviour
 		GameObject bulletClone = Instantiate(Bullet,
 			transform.position, Quaternion.identity);
 			
-			Vector2 bulletVelocity =
+		Vector2 bulletVelocity =
 			new Vector2((worldPosition.x - transform.position.x),
 				worldPosition.y - transform.position.y);
-			bulletVelocity = bulletVelocity.normalized * bulletSpeed;
-			
-            bulletClone.GetComponent<Rigidbody2D>().velocity = bulletVelocity;
+		bulletVelocity = bulletVelocity.normalized * bulletSpeed;
+		bulletClone.GetComponent<Rigidbody2D>().velocity = bulletVelocity;
+	}
+	
+	void Start() {
+		audioSource = GetComponent<AudioSource>();
+		CornShoot = Resources.Load<AudioClip>("Audio/CornShoot");
 	}
 	
     void Update()
@@ -29,8 +35,13 @@ public class PlayerShoot : MonoBehaviour
 		if (Input.GetMouseButton(0)) {
 			bulletReloadTimer -= Time.deltaTime;
 			if (bulletReloadTimer <= 0) {
-				SpawnBullet();
 				bulletReloadTimer = bulletReload;
+				if (GlobalVariables.playerCorn > 25) {
+					GlobalVariables.playerCorn -= 1;
+					audioSource.pitch = Random.Range(0.9f, 1.1f);
+					audioSource.PlayOneShot(CornShoot, 0.7f);
+					SpawnBullet();
+				}
 			}
 		}
 		

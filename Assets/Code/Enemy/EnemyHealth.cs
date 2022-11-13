@@ -23,6 +23,42 @@ public class EnemyHealth : MonoBehaviour
 
 	public GameObject EnemyParticle;
 	
+	private AudioSource audioSource;
+	private AudioClip SlimeHit;
+	private AudioClip SlimeSplat1;
+	private AudioClip SlimeSplat2;
+	private AudioClip SlimeSplat3;
+	private AudioClip SlimeSplat4;
+	private AudioClip SlimeSplatBig;
+	private AudioClip SlimeSplatTiny;
+	
+	void PlaySplatSound() {
+		if (gameObject.name == "SlimeTiny(Clone)") {
+			AudioSource.PlayClipAtPoint(SlimeSplatTiny,
+				transform.position, 1f);
+		}
+		else {
+			switch (Random.Range(0, 4)) {
+				case 0:
+					AudioSource.PlayClipAtPoint(SlimeSplat1,
+						transform.position, 1f);
+					break;
+				case 1:
+					AudioSource.PlayClipAtPoint(SlimeSplat2,
+						transform.position, 1f);
+					break;
+				case 2:
+					AudioSource.PlayClipAtPoint(SlimeSplat3,
+						transform.position, 1f);
+					break;
+				case 3:
+					AudioSource.PlayClipAtPoint(SlimeSplat4,
+						transform.position, 1f);
+					break;					
+			}
+		}
+	}
+	
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
@@ -46,6 +82,15 @@ public class EnemyHealth : MonoBehaviour
         spriteColor = sRenderer.color;
 		alpha = spriteColor.a;
 		Color.RGBToHSV(spriteColor, out H, out S, out V);
+		
+		audioSource = GetComponent<AudioSource>();
+		SlimeHit = Resources.Load<AudioClip>("Audio/SlimeHit");
+		SlimeSplat1 = Resources.Load<AudioClip>("Audio/SlimeSplat1");
+		SlimeSplat2 = Resources.Load<AudioClip>("Audio/SlimeSplat2");
+		SlimeSplat3 = Resources.Load<AudioClip>("Audio/SlimeSplat3");
+		SlimeSplat4 = Resources.Load<AudioClip>("Audio/SlimeSplat4");
+		SlimeSplatBig = Resources.Load<AudioClip>("Audio/SlimeSplatBig");
+		SlimeSplatTiny = Resources.Load<AudioClip>("Audio/SlimeSplatTiny");
     }
 
     void Update()
@@ -55,6 +100,7 @@ public class EnemyHealth : MonoBehaviour
         sRenderer.color = spriteColor;
 		
 		if (HP <= 0) {
+			PlaySplatSound();
 			// Player earns cash for popping a slime
 			GlobalVariables.playerMoney += cashValue;
 			for (int i = 0; i < 7; i++) {
@@ -81,6 +127,9 @@ public class EnemyHealth : MonoBehaviour
 	
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Bullet") {
+			if (HP > 1) {
+				audioSource.PlayOneShot(SlimeHit, 1f);
+			}
 			HP -= 1;
 		}
 	}

@@ -6,10 +6,11 @@ public class NightBackground : MonoBehaviour
 {
 	private SpriteRenderer sRenderer;
 	private Color spriteColor;
-	private float alpha;
+	public static float alpha;
 	private bool isNight;
 	private bool changingTime;
 	private bool timeChanged;
+	public const float MAX_FADE = 0.75f;
 	
     void Start()
     {
@@ -38,11 +39,11 @@ public class NightBackground : MonoBehaviour
 		if (changingTime) {
 			if (!isNight) {
 				// Switch from day to night
-				if (alpha < 0.75f) {
+				if (alpha < MAX_FADE) {
 					alpha += (Time.deltaTime * 0.15f);
 				}
 				else {
-					alpha = 0.75f;
+					alpha = MAX_FADE;
 					isNight = true;
 					changingTime = false;
 					timeChanged = true;

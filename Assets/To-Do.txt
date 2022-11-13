@@ -19,11 +19,17 @@ Things to do to complete development of Cornage, in order:
 [✓] Remove friction from players and enemies, and change their movement code to use FixedUpdate()
 [✓] Add day and night cycle (slimes spawn during the night)
 [✓] Update Slime spawn rate so that higher waves spawn more Slimes
-[✓] Add tile-based dirt patches that the player can plant corn kernels on
+[✓] Add tile-based soil patches that the player can plant corn kernels on
 [✓] Make patches store a kernel value that grows over time
 [✓] Allow the player to harvest grown kernels, adding them to a corn ammo variable
-[] Limit corn ammo; the player should start with only around 10 kernels
-[] Allow player to sell kernels for 1 Buck apiece
-[] Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute
+[✓] Limit corn ammo; the player should start with only around 50 kernels
+[✓] Allow player to sell 50 kernels for 5 Bucks
+[✓] Add sound effects
+[] Add corn cob icon on a soil patch when corn is fully grown on that patch
 [] Allow the player to be hurt by slimes and KO'd (the player has three lives, which regenerate in between waves)
-[] Add title screen, game over screen, music, and sound effects
+[] Destroy the player if they don't have enough cash by the end of the night
+[] Ensure game is relatively balanced by playtesting
+[] Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute
+[] Add title screen
+[] Add game over screen
+[] Add music

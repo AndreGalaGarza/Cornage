@@ -31,6 +31,10 @@ public class GlobalVariables : MonoBehaviour
 			playerCorn = 0;
 		}
 		
+		if (playerMoney < 0) {
+			playerMoney = 0;
+		}
+		
 		if (harvestCooldownTimer > 0f) {
 			harvestCooldownTimer -= Time.deltaTime;
 		}
