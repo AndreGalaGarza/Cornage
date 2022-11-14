@@ -129,6 +129,7 @@ MonoBehaviour:
   SoilWithKernels: {fileID: 21300000, guid: e37a3ea232037e84ea98f35fda0c3a23, type: 3}
   CornGrowthBarOutside: {fileID: 1249295618838441192, guid: 8765ca11c4fe26044a6dc62be30a1e7b, type: 3}
   CornGrowthBarInside: {fileID: 1249295618838441192, guid: 3cd512fcadc2f234fb901c671ea6361d, type: 3}
+  CornFullyGrownIcon: {fileID: 6652456695527181462, guid: 1398f4d7c4d02de44a70cab61cfb9c85, type: 3}
 --- !u!82 &7086903123593772446
 AudioSource:
   m_ObjectHideFlags: 0

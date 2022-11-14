@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+	public SpriteRenderer sRenderer;
 	public GameObject Bullet;
 	private const int bulletSpeed = 10;
 	private const float bulletReload = 0.1f;
@@ -25,6 +26,7 @@ public class PlayerShoot : MonoBehaviour
 	}
 	
 	void Start() {
+		sRenderer = GetComponent<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
 		CornShoot = Resources.Load<AudioClip>("Audio/CornShoot");
 	}
@@ -49,12 +51,21 @@ public class PlayerShoot : MonoBehaviour
 		if (Input.GetMouseButtonUp(0)) {
 			bulletReloadTimer = 0;
 		}
+		
+		// Flip sprite depending on mouse position
+		if (Input.mousePosition.x < (Screen.width / 2f)) {
+			sRenderer.flipX = true;
+		}
+		else {
+			sRenderer.flipX = false;
+		}
 	}
 	
 	void FixedUpdate()
 	{
 		Vector3 worldPosition =
-			Camera.main.ScreenToWorldPoint(Input.mousePosition);	
-		Debug.DrawLine(transform.position, worldPosition, Color.red);
+			Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		// DEBUG: Draw line of fire for bullets
+		//Debug.DrawLine(transform.position, worldPosition, Color.red);
 	}
 }

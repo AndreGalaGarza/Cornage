@@ -47,7 +47,8 @@ public class EnemySpawner : MonoBehaviour
 			4f, 0.5f, 8f, 1f);
 		
 		// Spawn enemies during the night
-		if (GlobalVariables.timeOfDay == "night") {
+		if (GlobalVariables.timeOfDay == "night"
+			&& !GlobalVariables.outtaCash) {
 			if (enemySpawnTimer > 0) {
 				enemySpawnTimer -= Time.deltaTime;
 			}

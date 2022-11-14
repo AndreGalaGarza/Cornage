@@ -25,10 +25,11 @@ public class GlobalHotkeys : MonoBehaviour
 			GlobalVariables.playerMoney -= 1;
 		}
 		
-		// DEBUG ONLY:
-		// Press E to "Emergency sell" 50 corn for 5 cash.
-		if (GlobalVariables.playerCorn >= 75 && Input.GetKeyDown(KeyCode.E)) {
-			GlobalVariables.playerCorn -= 50;
+		// Press E to "Emergency sell" 10 corn for 5 cash.
+		if (GlobalVariables.playerCorn >= 35
+			&& GlobalVariables.playerMoney < GlobalVariables.moneyQuota
+			&& Input.GetKeyDown(KeyCode.E)) {
+			GlobalVariables.playerCorn -= 10;
 			GlobalVariables.playerMoney += 5;
 		}
     }

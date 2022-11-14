@@ -17,8 +17,10 @@ public class CornPlantAndHarvest : MonoBehaviour
 	
 	public GameObject CornGrowthBarOutside;
 	public GameObject CornGrowthBarInside;
+	public GameObject CornFullyGrownIcon;
 	private GameObject NewCornGrowthBarOutside;
 	private GameObject NewCornGrowthBarInside;
+	private GameObject NewCornFullyGrownIcon;
 	private const float CORN_GROWTH_BAR_MAX_LENGTH = 0.82f;
 	private const float CORN_GROWTH_BAR_WIDTH = 0.12f;
 	private float cornGrowthBarLength;
@@ -43,10 +45,16 @@ public class CornPlantAndHarvest : MonoBehaviour
 			transform.position, Quaternion.identity);
 		NewCornGrowthBarInside = Instantiate(CornGrowthBarInside,
 			transform.position, Quaternion.identity);
+		NewCornFullyGrownIcon = Instantiate(CornFullyGrownIcon,
+			transform.position, Quaternion.identity);
+		
 		NewCornGrowthBarOutside.transform.parent = transform;
 		NewCornGrowthBarInside.transform.parent = transform;
+		NewCornFullyGrownIcon.transform.parent = transform;
+		
 		NewCornGrowthBarOutside.SetActive(false);
 		NewCornGrowthBarInside.SetActive(false);
+		NewCornFullyGrownIcon.SetActive(false);
 		
 		audioSource = GetComponent<AudioSource>();
 		CornPlant = Resources.Load<AudioClip>("Audio/CornPlant");
@@ -55,6 +63,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 	
     void Update()
 	{
+		// Press Space to plant or harvest corn
 		if (PlayerOverlaps() && Input.GetKeyDown(KeyCode.Space)
 			&& GlobalVariables.harvestCooldownTimer == 0f) {
 			GlobalVariables.harvestCooldownTimer =
@@ -64,6 +73,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 				audioSource.PlayOneShot(CornHarvest, 0.7f);
 				NewCornGrowthBarOutside.SetActive(false);
 				NewCornGrowthBarInside.SetActive(false);
+				NewCornFullyGrownIcon.SetActive(false);
 				hasKernels = false;
 				GlobalVariables.playerCorn += (CORN_PLANTED + cornGrown);
 				sRenderer.sprite = SoilEmpty;
@@ -73,6 +83,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 				audioSource.PlayOneShot(CornPlant, 0.7f);
 				NewCornGrowthBarOutside.SetActive(true);
 				NewCornGrowthBarInside.SetActive(true);
+				NewCornFullyGrownIcon.SetActive(false);
 				hasKernels = true;
 				GlobalVariables.playerCorn -= CORN_PLANTED;
 				sRenderer.sprite = SoilWithKernels;
@@ -95,15 +106,19 @@ public class CornPlantAndHarvest : MonoBehaviour
 				cornGrowthMultiplier += Time.deltaTime;
 				// Corn growth function:
 				// Sigmoid curve takes cornGrown from 0 to 75
-				// in approximately 69.444 seconds
+				// in approximately 61.335 seconds
 				cornGrownFloat = GlobalFunctions.Sigmoid(cornGrowthMultiplier,
-					(float)(MAX_CORN_GROWN + 5f), -0.1f, 40f, -1f);
+					(float)(MAX_CORN_GROWN + 10f), -0.1f, 40f, -1f);
 				cornGrown = (int)(cornGrownFloat);
 			}
 			else {
 				cornGrowthMultiplier = 0f;
 				cornGrownFloat = (float)(MAX_CORN_GROWN);
 				cornGrown = MAX_CORN_GROWN;
+				// Display CornFullyGrownIcon
+				NewCornGrowthBarOutside.SetActive(false);
+				NewCornGrowthBarInside.SetActive(false);
+				NewCornFullyGrownIcon.SetActive(true);
 			}
 			// Set length of corn growth progress bar
 			cornGrowthBarLength = CORN_GROWTH_BAR_MAX_LENGTH *

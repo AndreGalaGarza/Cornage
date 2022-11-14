@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
 	private float squishFactor;
 	private float squishMultiplier;
 	private float hitSquish = 0;
+	private GameObject Player;
+	private Vector3 playerPos = new Vector3(0, 0, 0);
 	
 	void Start()
 	{
@@ -19,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
 			squishMultiplier = 0.7f;
 		}
 		else if (gameObject.name == "SlimeTiny(Clone)") {
-			speed = 5f;
+			speed = 4.2f;
 			squishSpeed = 10;
 			squishMultiplier = 1f;
 		}
@@ -51,9 +53,12 @@ public class EnemyMovement : MonoBehaviour
 			squishFactor + hitSquish, transform.localScale.z);
 		
 		// Enemy constantly pursues player using MoveTowards
-        transform.position = Vector3.MoveTowards(transform.position,
-			GameObject.FindWithTag("Player").transform.position,
-			speed * Time.fixedDeltaTime);
+		Player = GameObject.FindWithTag("Player");
+		if (Player) {
+			playerPos = Player.transform.position;
+		}
+		transform.position = Vector3.MoveTowards(transform.position,
+			playerPos, speed * Time.fixedDeltaTime);
     }
 	
 	void OnTriggerEnter2D(Collider2D col) {
