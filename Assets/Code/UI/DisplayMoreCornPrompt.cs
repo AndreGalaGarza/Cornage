@@ -16,7 +16,7 @@ public class DisplayMoreCornPrompt : MonoBehaviour
 	
 	public static void NeedMoreCorn(ref float fadeoutTime,
 		ref float alpha, ref AudioSource audioSource, ref AudioClip Buzzer) {
-		audioSource.PlayOneShot(Buzzer, 1f);
+		audioSource.PlayOneShot(Buzzer, 0.45f);
 		alpha = 1;
 		fadeoutTime = fadeoutTimeMax;
 	}
@@ -24,6 +24,7 @@ public class DisplayMoreCornPrompt : MonoBehaviour
     void Start()
     {
         sRenderer = GetComponent<SpriteRenderer>();
+		sRenderer.enabled = true;
         spriteColor = sRenderer.color;
 		// Set sprite to invisible by default
         alpha = 0;

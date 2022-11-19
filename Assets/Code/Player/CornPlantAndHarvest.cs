@@ -12,7 +12,7 @@ public class CornPlantAndHarvest : MonoBehaviour
 	private int cornGrown = 0;
 	private float cornGrownFloat = 0f;
 	private const int CORN_PLANTED = 25;
-	private const int MAX_CORN_GROWN = 75;
+	private const int MAX_CORN_GROWN = 25;
 	private float cornGrowthMultiplier = 0f;
 	
 	public GameObject CornGrowthBarOutside;
@@ -64,7 +64,8 @@ public class CornPlantAndHarvest : MonoBehaviour
     void Update()
 	{
 		// Press Space to plant or harvest corn
-		if (PlayerOverlaps() && Input.GetKeyDown(KeyCode.Space)
+		if (GlobalVariables.gameStarted && PlayerOverlaps()
+			&& Input.GetKeyDown(KeyCode.Space)
 			&& GlobalVariables.harvestCooldownTimer == 0f) {
 			GlobalVariables.harvestCooldownTimer =
 				GlobalVariables.HARVEST_COOLDOWN;
@@ -110,10 +111,9 @@ public class CornPlantAndHarvest : MonoBehaviour
 			if (cornGrown < MAX_CORN_GROWN - 0.1f) {
 				cornGrowthMultiplier += Time.deltaTime;
 				// Corn growth function:
-				// Sigmoid curve takes cornGrown from 0 to 75
-				// in approximately 61.335 seconds
-				cornGrownFloat = GlobalFunctions.Sigmoid(cornGrowthMultiplier,
-					(float)(MAX_CORN_GROWN + 10f), -0.1f, 40f, -1f);
+				// Basic exponential curve takes cornGrown from 0 to 25
+				// in approximately 34.184 seconds
+				cornGrownFloat = Mathf.Pow(1.1f, cornGrowthMultiplier) - 1f;
 				cornGrown = (int)(cornGrownFloat);
 			}
 			else {

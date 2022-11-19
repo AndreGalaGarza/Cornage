@@ -16,6 +16,7 @@ public class GlobalVariables : MonoBehaviour
 	public static float harvestCooldownTimer = 0f;
 	public const float HARVEST_COOLDOWN = 0.1f;
 	public static bool outtaCash;
+	public static bool gameStarted;
 	
     void Awake()
     {
@@ -27,6 +28,7 @@ public class GlobalVariables : MonoBehaviour
 		wave = 0;
 		waveTime = DAY_LENGTH;
 		outtaCash = false;
+		gameStarted = false;
     }
 	
 	void Update()

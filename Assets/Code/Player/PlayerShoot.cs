@@ -34,7 +34,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {	
 		// When mouse button is held down, fire bullets at a fixed rate
-		if (Input.GetMouseButton(0)) {
+		if (GlobalVariables.gameStarted && Input.GetMouseButton(0)) {
 			bulletReloadTimer -= Time.deltaTime;
 			if (bulletReloadTimer <= 0) {
 				bulletReloadTimer = bulletReload;

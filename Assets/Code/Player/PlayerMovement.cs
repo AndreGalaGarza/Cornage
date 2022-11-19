@@ -8,21 +8,29 @@ public class PlayerMovement : MonoBehaviour
 	private const float speedModifier = 0.2f;
 	private float speedX = 0;
 	private float speedY = 0;
+	private Rigidbody2D rb;
+	
+	void Start()
+	{
+		rb = GetComponent<Rigidbody2D>();
+	}
 	
     void Update()
     {
 		// Get keyboard input
-		if (Input.GetKey(KeyCode.D)) {
-			speedX += speedModifier * Time.deltaTime * 100f;
-		}
-		if (Input.GetKey(KeyCode.A)) {
-			speedX -= speedModifier * Time.deltaTime * 100f;
-		}
-		if (Input.GetKey(KeyCode.W)) {
-			speedY += speedModifier * Time.deltaTime * 100f;
-		}
-		if (Input.GetKey(KeyCode.S)) {
-			speedY -= speedModifier * Time.deltaTime * 100f;
+		if (GlobalVariables.gameStarted) {
+			if (Input.GetKey(KeyCode.D)) {
+				speedX += speedModifier * Time.deltaTime * 100f;
+			}
+			if (Input.GetKey(KeyCode.A)) {
+				speedX -= speedModifier * Time.deltaTime * 100f;
+			}
+			if (Input.GetKey(KeyCode.W)) {
+				speedY += speedModifier * Time.deltaTime * 100f;
+			}
+			if (Input.GetKey(KeyCode.S)) {
+				speedY -= speedModifier * Time.deltaTime * 100f;
+			}
 		}
 		
 		// Cap speed while input is received

@@ -64,17 +64,18 @@ public class EnemyHealth : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		coll = GetComponent<BoxCollider2D>();
 		
+		// Set cash values of different types of slimes
 		if (gameObject.name == "SlimeBig(Clone)") {
 			maxHP = 30;
-			cashValue = 10;
+			cashValue = 30;
 		}
 		else if (gameObject.name == "SlimeTiny(Clone)") {
 			maxHP = 3;
-			cashValue = 1;
+			cashValue = 3;
 		}
 		else {
 			maxHP = 15;
-			cashValue = 5;
+			cashValue = 15;
 		}
 		HP = maxHP;
 		

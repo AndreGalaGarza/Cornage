@@ -17,12 +17,14 @@ public class WaveTimer : MonoBehaviour
 	
     void Update()
     {
-        if (secondsTimer > 0) {
-			secondsTimer -= Time.deltaTime;
-		}
-		else {
-			secondsTimer = 1f;
-			GlobalVariables.waveTime -= 1;
+		if (GlobalVariables.gameStarted) {
+			if (secondsTimer > 0) {
+				secondsTimer -= Time.deltaTime;
+			}
+			else {
+				secondsTimer = 1f;
+				GlobalVariables.waveTime -= 1;
+			}
 		}
 		
 		if (GlobalVariables.waveTime == 0) {

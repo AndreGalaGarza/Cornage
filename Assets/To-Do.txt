@@ -29,8 +29,8 @@ Things to do to complete development of Cornage, in order:
 [✓] Allow the player to be hurt by slimes and KO'd (the player has three lives, which regenerate in between waves)
 [✓] Destroy the player if they don't have enough cash by the end of the night
 [] Ensure game is relatively balanced by playtesting
-[] Add warning message that pops up below corn count on the HUD, which prompts the player to harvest more corn if they attempt an action without enough corn
+[✓] Add warning message that pops up below corn count on the HUD, which prompts the player to harvest more corn if they attempt an action without enough corn
 [✓] Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute (After thinking about this for a while, it wouldn't be especially useful to the player, so I've decided to skip it)
 [] Add title screen
-[] Add game over screen
-[] Add music
+[✓] Add game over screen
+[✓] Add music

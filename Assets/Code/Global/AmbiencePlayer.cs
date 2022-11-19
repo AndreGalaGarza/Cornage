@@ -19,11 +19,11 @@ public class AmbiencePlayer : MonoBehaviour
 		nightPercent = NightBackground.alpha / NightBackground.MAX_FADE;
 		
 		if (gameObject.name == "NightAmbiencePlayer") {
-			maxVolume = 0.7f;
+			maxVolume = 0.4f;
 			audioSource.volume = nightPercent * maxVolume;
 		}
         else if (gameObject.name == "DayAmbiencePlayer") {
-			maxVolume = 1f;
+			maxVolume = 0.75f;
 			audioSource.volume = (1f - nightPercent) * maxVolume;
 		}
     }

@@ -8,6 +8,13 @@ public class DisplayVariables : MonoBehaviour
 	public TMP_Text text;
     void Update()
     {
+		if (!GlobalVariables.gameStarted) {
+			text.enabled = false;
+		}
+		else {
+			text.enabled = true;
+		}
+		
 		if (gameObject.name == "CornText") {
 			text.SetText(GlobalVariables.playerCorn.ToString());
 		}

@@ -7,6 +7,12 @@ public class GlobalHotkeys : MonoBehaviour
 {
     void Update()
     {
+		// Press Enter to start the game.
+		if (Input.GetKeyDown(KeyCode.Return)
+			&& !GlobalVariables.gameStarted) {
+			GlobalVariables.gameStarted = true;
+		}
+		
 		// Press R to restart.
 		// The player shouldn't accidentally press R
 		// and lose their hard-earned progress.
@@ -28,7 +34,8 @@ public class GlobalHotkeys : MonoBehaviour
 		
 		// Press E to "Emergency sell" 50 corn for 5 cash.
 		if (Input.GetKeyDown(KeyCode.E)
-			&& GlobalVariables.playerMoney < GlobalVariables.moneyQuota) {
+			&& GlobalVariables.playerMoney < GlobalVariables.moneyQuota
+			&& PlayerHealth.HP > 0) {
 			if (GlobalVariables.playerCorn >= 75) {
 				GlobalVariables.playerCorn -= 50;
 				GlobalVariables.playerMoney += 5;
