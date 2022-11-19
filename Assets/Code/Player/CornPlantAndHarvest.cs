@@ -88,6 +88,11 @@ public class CornPlantAndHarvest : MonoBehaviour
 				GlobalVariables.playerCorn -= CORN_PLANTED;
 				sRenderer.sprite = SoilWithKernels;
 			}
+			else {
+				DisplayMoreCornPrompt.NeedMoreCorn(ref DisplayMoreCornPrompt.fadeoutTime,
+					ref DisplayMoreCornPrompt.alpha, ref DisplayMoreCornPrompt.audioSource,
+					ref DisplayMoreCornPrompt.Buzzer);
+			}
 		}
 		
 		// Display progress bar of corn growth
