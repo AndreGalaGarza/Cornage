@@ -22,13 +22,13 @@ public class MusicPlayer : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.M))
 		{
 			// Mute
-			if (m_Play == true)
+			if (m_Play)
 			{
 				audioSource.Stop();
 				m_Play = false;
 			}
 			// Unmute
-			else if (m_Play == false)
+			else if (!m_Play)
 			{
 				audioSource.Play();
 				m_Play = true;
@@ -39,11 +39,11 @@ public class MusicPlayer : MonoBehaviour
 		nightPercent = NightBackground.alpha / NightBackground.MAX_FADE;
 		
 		if (gameObject.name == "NightMusicPlayer") {
-			maxVolume = 0.65f;
+			maxVolume = 0.57f;
 			audioSource.volume = nightPercent * maxVolume;
 		}
         else if (gameObject.name == "DayMusicPlayer") {
-			maxVolume = 0.65f;
+			maxVolume = 0.57f;
 			audioSource.volume = (1f - nightPercent) * maxVolume;
 		}
     }

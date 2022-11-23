@@ -6,6 +6,7 @@ using TMPro;
 public class DisplayVariables : MonoBehaviour
 {
 	public TMP_Text text;
+	
     void Update()
     {
 		if (!GlobalVariables.gameStarted) {

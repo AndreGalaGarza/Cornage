@@ -45,7 +45,6 @@ public class GlobalHotkeys : MonoBehaviour
 					ref DisplayMoreCornPrompt.alpha, ref DisplayMoreCornPrompt.audioSource,
 					ref DisplayMoreCornPrompt.Buzzer);
 			}
-
 		}
     }
 }

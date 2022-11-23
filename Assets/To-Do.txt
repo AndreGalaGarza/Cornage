@@ -30,7 +30,18 @@ Things to do to complete development of Cornage, in order:
 [✓] Destroy the player if they don't have enough cash by the end of the night
 [] Ensure game is relatively balanced by playtesting
 [✓] Add warning message that pops up below corn count on the HUD, which prompts the player to harvest more corn if they attempt an action without enough corn
-[✓] Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute (After thinking about this for a while, it wouldn't be especially useful to the player, so I've decided to skip it)
-[] Add title screen
+[✓] Add title screen
 [✓] Add game over screen
 [✓] Add music
+
+Ideas for Future Expansion and Improvements
+- POTENTIAL MOBILE GAME IDEA: Grow crops in a "farm" scene to use as resources, then move to an "arena" scene to fight a wave of slimes, using your grown crops as weapons!
+- Allow player to execute a special "Cornado" attack with the Shift key (either LShift or RShift), which spawns ten corn kernels that are spawned around the player and fire away from them; this repeats rapidly 10 times total, so the attack costs 100 kernels to execute (After thinking about this for a while, it wouldn't be especially useful to the player, so I've decided to skip it)
+- Allow player to grow different types of crops that can act as different weapons (tomato or pumpkin bombs, perhaps?)
+- Special waves that can appear randomly at the beginning of the night, replacing normal waves (below is a list of Thomas's suggested Special Rounds)
+-- Tax Time: The government collects 20% tax when 30 seconds are left in the wave. To suffer the least from the tax, hoard your crops until 30 seconds remain.
+-- Wind Chill: Any crops planted die mere seconds after they fully grow.
+-- Bunnies: Bunnies arrive with the slimes to try and eat your crops. If you accidentally kill a bunny, your reputation tanks for 5 seconds and you can't sell any crops.
+-- Mole People: The Mole People have created a temporary retreat on your farm tiles. You cannot plant on the Mole People's tiles, so planting area is reduced.
+-- Tiny Terror (I thought of this, not Thomas): All slimes spawned are Tiny Slimes, which appear at a rapid spawn rate.
+-- Glowflies: The slimes are restless.

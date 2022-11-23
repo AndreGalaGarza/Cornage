@@ -32,6 +32,7 @@ public class WaveTimer : MonoBehaviour
 				// Switch from day to night
 				GlobalVariables.timeOfDay = "night";
 				GlobalVariables.wave += 1;
+				GlobalVariables.highestWave = GlobalVariables.wave;
 				GlobalVariables.waveTime = GlobalVariables.NIGHT_LENGTH;
 			}
 			else {
@@ -39,7 +40,7 @@ public class WaveTimer : MonoBehaviour
 				if (GlobalVariables.playerMoney
 					>= GlobalVariables.moneyQuota) {
 					// Cha-ching!
-					audioSource.PlayOneShot(ChaChing, 1f);
+					audioSource.PlayOneShot(ChaChing, 0.85f);
 					PlayerHealth.HP = 3;
 					GlobalVariables.timeOfDay = "day";
 					GlobalVariables.waveTime = GlobalVariables.DAY_LENGTH;
@@ -47,11 +48,20 @@ public class WaveTimer : MonoBehaviour
 					
 					// Gradually increase moneyQuotaIncrement exponentially
 					if (GlobalVariables.wave >= 2) {
+						if (GlobalVariables.moneyQuotaMultiplier > 1.00f) {
+							GlobalVariables.moneyQuotaMultiplier -= 0.02f;
+						}
 						GlobalVariables.moneyQuotaIncrement =
-							(int)(GlobalVariables.moneyQuotaIncrement * 1.25f);
+							(int)(GlobalVariables.moneyQuotaIncrement *
+								GlobalVariables.moneyQuotaMultiplier);
 					}
 					GlobalVariables.moneyQuota +=
 						GlobalVariables.moneyQuotaIncrement;
+					if (GlobalVariables.moneyQuota >
+						GlobalVariables.MAX_MONEY_QUOTA) {
+						GlobalVariables.moneyQuota =
+							GlobalVariables.MAX_MONEY_QUOTA;
+					}
 				}
 				else {
 					GlobalVariables.outtaCash = true;
