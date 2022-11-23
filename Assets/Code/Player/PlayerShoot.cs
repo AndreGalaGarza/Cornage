@@ -41,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
 				if (GlobalVariables.playerCorn > 25) {
 					GlobalVariables.playerCorn -= 1;
 					audioSource.pitch = Random.Range(0.9f, 1.1f);
-					audioSource.PlayOneShot(CornShoot, 0.7f);
+					audioSource.PlayOneShot(CornShoot, 0.9f);
 					SpawnBullet();
 				}
 			}

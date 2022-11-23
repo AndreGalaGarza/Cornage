@@ -1,0 +1,13 @@
+SlimeSplat1: https://freesound.org/people/Angel_Perez_Grandi/sounds/47340/
+SlimeSplat2: https://freesound.org/people/Breviceps/sounds/445117/
+SlimeSplat3: https://freesound.org/people/DrMinky/sounds/167074/
+SlimeSplat4: https://freesound.org/people/Angel_Perez_Grandi/sounds/47341/
+SlimeSplatBig: https://freesound.org/people/steveygos93/sounds/93569/
+SlimeSplatTiny: https://freesound.org/people/greenvwbeetle/sounds/244653/
+Explosion: https://freesound.org/people/Iwiploppenisse/sounds/156031/
+DayAmbienceOld: https://freesound.org/people/Sandermotions/sounds/234306/
+DayAmbience: https://freesound.org/people/tom_woysky/sounds/391127/
+NightAmbience: https://freesound.org/people/Cristiano_Scherer/sounds/478788/
+ChaChing: https://soundbible.com/1997-Cha-Ching-Register.html
+DingDong: https://freesound.org/people/MatthewWong/sounds/361564/
+EmergencySell: https://freesound.org/people/keweldog/sounds/181757/

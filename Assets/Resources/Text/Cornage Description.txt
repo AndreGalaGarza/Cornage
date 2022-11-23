@@ -1,0 +1,28 @@
+NOTE: Due to the way Unity exports games to WebGL, there are several known bugs with the web version of this game:
+- The sound of shooting corn has an audio glitch at the end.
+- The background music does not loop immediately, and may loop improperly when fading between night and day.
+If you wish to play without these bugs, please download the Windows version of the game instead.
+
+Cornage
+Your crops are your weapon!
+
+You're just an ordinary corn farmer, spending your days collecting corn for a living... but at night, the slimes invade your farm! Unfortunately, you don't have any conventional ammo, so you'll have to resort to using the corn you grow to defeat each wave of slimes! How many nights can you survive?
+
+Controls:
+Use the WASD keys to move around.
+Press Space over an empty patch of soil to plant 25 corn kernels on the soil. Over time, they'll grow into 50 kernels!
+Press Space over a patch of soil with corn on it to harvest the corn.
+Use the mouse to aim, and hold down the left mouse button to fire. Be careful, though - firing uses up corn that you've harvested!
+
+Tips:
+If you have only 25 kernels left, you can't fire, so make sure to harvest more corn!
+Shoot slimes with enough corn to pop them. Popping slimes is worth cash!
+Press E to sell 50 corn kernels for 5 cash. This ability is best used in case of emergency, but you can use it at any time!
+You have three lives, which replenish at the end of a night. Taking a hit from a slime causes you to lose a life.
+Survive and earn enough cash at the end of the night to progress through a wave. Your high score is the number of waves you survived before losing all your lives or running "Outta Cash"!
+
+Credits
+Game programmed by ThePowerPlayer
+All artwork created by ThePowerPlayer
+Music by 0blivion#8958 on Discord
+Sounds generated using ChipTone and freesound.org

@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
 	private SpriteRenderer sRenderer;
     private Color spriteColor;
 	private float alpha;
-	private const int fadeSpeed = 5;
+	private const int fadeSpeed = 12;
 	private float x = 0;
 	
 	public GameObject PlayerDestroyed;
@@ -79,22 +79,25 @@ public class PlayerHealth : MonoBehaviour
 				invincibilityTime = 0;
 				invincible = false;
 			}
-			
-			// Cause player to flash during invincibility
+		}
+    }
+	
+	void FixedUpdate() {
+		// Cause player to flash during invincibility
+		if (invincible) {
 			x += Time.fixedDeltaTime * fadeSpeed;
 			if (x >= 2f * Mathf.PI) {
 				x = 0;
 			}
 			alpha = ((1f/3f) * Mathf.Sin(x)) + (2f/3f);
-		}
+		}	
 		else {
 			x = 0;
 			alpha = 1;
 		}
-		
 		spriteColor.a = alpha;
 		sRenderer.color = spriteColor;
-    }
+	}
 	
 	void OnCollisionEnter2D(Collision2D col) {
 		if (!invincible && col.gameObject.tag == "Enemy") {
