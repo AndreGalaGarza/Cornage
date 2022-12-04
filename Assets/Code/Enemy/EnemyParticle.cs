@@ -24,16 +24,18 @@ public class EnemyParticle : MonoBehaviour
 	
 	void Update()
     {
-		timeUntilFade -= Time.deltaTime;
-		if (timeUntilFade <= 0) {
-			timeUntilFade = 0;	
-			if (alpha > 0) {
-				alpha -= (Time.deltaTime * 3f);
-				spriteColor.a = alpha;
-				sRenderer.color = spriteColor;
-			}
-			else {
-				Destroy(gameObject);
+		if (!GlobalVariables.isPaused) {
+			timeUntilFade -= Time.deltaTime;
+			if (timeUntilFade <= 0) {
+				timeUntilFade = 0;	
+				if (alpha > 0) {
+					alpha -= (Time.deltaTime * 3f);
+					spriteColor.a = alpha;
+					sRenderer.color = spriteColor;
+				}
+				else {
+					Destroy(gameObject);
+				}
 			}
 		}
     }

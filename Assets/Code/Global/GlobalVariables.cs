@@ -20,6 +20,7 @@ public class GlobalVariables : MonoBehaviour
 	public const float HARVEST_COOLDOWN = 0.1f;
 	public static bool outtaCash;
 	public static bool gameStarted;
+	public static bool isPaused;
 	
     void Awake()
     {
@@ -33,6 +34,8 @@ public class GlobalVariables : MonoBehaviour
 		waveTime = DAY_LENGTH;
 		outtaCash = false;
 		gameStarted = false;
+		isPaused = false;
+		Time.timeScale = 1;
 		
 		// DEBUG: Print moneyQuota for each wave
 		// for i number of waves
@@ -73,6 +76,13 @@ public class GlobalVariables : MonoBehaviour
 		}
 		else {
 			harvestCooldownTimer = 0f;
+		}
+		
+		if (!GlobalVariables.isPaused) {
+			Time.timeScale = 1;
+		}
+		else {
+			Time.timeScale = 0;
 		}
 	}
 }

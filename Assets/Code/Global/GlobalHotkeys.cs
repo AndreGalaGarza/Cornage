@@ -13,11 +13,23 @@ public class GlobalHotkeys : MonoBehaviour
 			GlobalVariables.gameStarted = true;
 		}
 		
-		// Press R to restart.
+		// Press R to restart, but only at the end of a game.
 		// The player shouldn't accidentally press R
 		// and lose their hard-earned progress.
         if (Input.GetKeyDown(KeyCode.R) && PlayerHealth.HP == 0) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+		
+		// Press P or Escape to pause the game.
+		if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+			&& GlobalVariables.gameStarted
+			&& PlayerHealth.HP > 0) {
+			if (!GlobalVariables.isPaused) {
+				GlobalVariables.isPaused = true;
+			}
+			else {
+				GlobalVariables.isPaused = false;
+			}
 		}
 		
 		// DEBUG ONLY:

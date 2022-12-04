@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
 	private float bulletReloadTimer = 0;
 	private AudioSource audioSource;
 	private AudioClip CornShoot;
+	private bool firing;
 	
 	void SpawnBullet() {
 		Vector3 worldPosition =
@@ -33,18 +34,13 @@ public class PlayerShoot : MonoBehaviour
 	
     void Update()
     {	
-		// When mouse button is held down, fire bullets at a fixed rate
-		if (GlobalVariables.gameStarted && Input.GetMouseButton(0)) {
-			bulletReloadTimer -= Time.deltaTime;
-			if (bulletReloadTimer <= 0) {
-				bulletReloadTimer = bulletReload;
-				if (GlobalVariables.playerCorn > 25) {
-					GlobalVariables.playerCorn -= 1;
-					audioSource.pitch = Random.Range(0.9f, 1.1f);
-					audioSource.PlayOneShot(CornShoot, 0.9f);
-					SpawnBullet();
-				}
-			}
+		// When mouse button is held down, fire bullets
+		if (GlobalVariables.gameStarted && !GlobalVariables.isPaused
+			&& Input.GetMouseButton(0)) {
+			firing = true;
+		}
+		else {
+			firing = false;
 		}
 		
 		// Reset bullet reload timer when mouse button is released
@@ -53,11 +49,13 @@ public class PlayerShoot : MonoBehaviour
 		}
 		
 		// Flip sprite depending on mouse position
-		if (Input.mousePosition.x < (Screen.width / 2f)) {
-			sRenderer.flipX = true;
-		}
-		else {
-			sRenderer.flipX = false;
+		if (!GlobalVariables.isPaused) {
+			if (Input.mousePosition.x < (Screen.width / 2f)) {
+				sRenderer.flipX = true;
+			}
+			else {
+				sRenderer.flipX = false;
+			}
 		}
 	}
 	
@@ -65,6 +63,21 @@ public class PlayerShoot : MonoBehaviour
 	{
 		Vector3 worldPosition =
 			Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		
+		// Fire bullets at a fixed rate
+		if (firing) {
+			bulletReloadTimer -= Time.fixedDeltaTime;
+			if (bulletReloadTimer <= 0) {
+				bulletReloadTimer = bulletReload;
+				if (GlobalVariables.playerCorn > 25) {
+					GlobalVariables.playerCorn -= 1;
+					audioSource.pitch = Random.Range(0.9f, 1.1f);
+					audioSource.PlayOneShot(CornShoot, 0.3f);
+					SpawnBullet();
+				}
+			}
+		}	
+		
 		// DEBUG: Draw line of fire for bullets
 		//Debug.DrawLine(transform.position, worldPosition, Color.red);
 	}
